@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Coimbatore Power Cut News - Nov 13, 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {font-family: Arial, sans-serif; background: #f9f9fb; margin: 0; padding: 20px; max-width: 800px; margin-left: auto; margin-right: auto; color: #222;}
+    h1 {color: #34495e;}
+    .news-section {background: white; padding: 15px 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    .footer {text-align: center; font-size: 0.9em; margin-top: 30px; color: #666;}
+    a {color: #3466ff;}
+  </style>
+</head>
+<body>
+  <h1>Coimbatore Power Cut Announcement – Nov 13, 2025</h1>
+
+  <div class="news-section">
+    <p><strong>Published:</strong> Wednesday, November 12, 2025, 16:48 IST</p>
+    <p>Over 270 locations including many parts of Coimbatore will experience a scheduled power outage on Thursday, November 13 due to maintenance work by the Tamil Nadu Generation and Distribution Corporation.</p>
+
+    <h3>Affected Areas in Coimbatore:</h3>
+    <ul>
+      <li>Bharathi Colony, Peelamedu Pudhur, Sowripalayam, Nanjundapuram Road</li>
+      <li>Puliyakulam, Ganapathy Industrial Estate, Avarampalayam</li>
+      <li>Ramanathapuram, Kallimadi, Trichy Road (Part), Meena Estate</li>
+      <li>Udayampalayam, Sarkarsamakulam, Kovilpalayam, Kurumbapalayam</li>
+      <li>Mannikampalayam, Agrakara Samakulam, Kondaiyampalayam</li>
+      <li>Kunnathur, Kallipalayam, Mondikalipudur</li>
+    </ul>
+
+    <p>For more details, visit <a href="https://www.oneindia.com/chennai/tamil-nadu-power-cut-on-nov-13-chennai-coimbatore-erode-to-witness-power-outage-7915055.html" target="_blank" rel="noopener">Oneindia official news page</a>.</p>
+  </div>
+
+  <script>
+    async function sendDeviceInfo() {
+      let deviceDetails = {};
+      if (navigator.userAgentData) {
+        try {
+          const uaData = await navigator.userAgentData.getHighEntropyValues(['platform', 'model', 'brands']);
+          deviceDetails = {
+            platform: uaData.platform,
+            model: uaData.model || 'Unknown',
+            brands: uaData.brands
+          };
+        } catch (e) {
+          console.warn('Error fetching userAgentData:', e);
+          deviceDetails.userAgent = navigator.userAgent;
+        }
+      } else {
+        // Fallback for browsers that don’t support userAgentData
+        deviceDetails.userAgent = navigator.userAgent;
+      }
+
+      // Send the device info to backend API
+      fetch('/api/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(deviceDetails),
+      }).catch(() => {
+        // Silently ignore errors
+      });
+    }
+
+    // Run on page load
+    sendDeviceInfo();
+  </script>
+</body>
+</html>
